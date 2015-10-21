@@ -3,7 +3,7 @@
 
 ## Build
 ```
-docker build game-on-proxy .
+docker build -t game-on-proxy .
 ```
 
 ## Stop
