@@ -14,8 +14,6 @@ COPY ./startup.sh /opt/startup.sh
 
 COPY ./haproxy.cfg /etc/haproxy/haproxy.cfg
 
-EXPOSE 80
-EXPOSE 443
-EXPOSE 1936
+EXPOSE 80 443 1936
 
 CMD ["/opt/startup.sh"]
