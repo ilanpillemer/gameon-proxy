@@ -13,7 +13,8 @@ RUN cd /opt ; echo "Extract Java..." ; tar xzf jdk-8u65-x64.tar.gz ; \
     apt-get install -y libc6-dev ; \
     touch /var/log/haproxy.log ; mkdir -p /run/haproxy/
 
-COPY ./haproxy-rsyslog.conf /etc/rsyslog.d/20-haproxy.conf
+COPY ./haproxy-rsyslog.conf /etc/rsyslog.d/49-haproxy.conf
+COPY ./rsyslog.conf /etc/rsyslog.conf
 
 COPY ./proxy.pem /etc/ssl/proxy.pem
 COPY ./startup.sh /opt/startup.sh
