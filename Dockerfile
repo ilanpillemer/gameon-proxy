@@ -10,7 +10,7 @@ RUN cd /opt ; echo "Extract Java..." ; tar xzf jdk-8u65-x64.tar.gz ; \
 	echo "Cleanup..." ; rm logstash-*.tar.gz jdk-8u65-x64.tar.gz ; \
 	echo deb http://archive.ubuntu.com/ubuntu trusty-backports main universe | \
     tee /etc/apt/sources.list.d/backports.list ; apt-get update ; apt-get install -y haproxy -t trusty-backports ; \
-    apt-get install -y libc6-dev ; mkdir -p /run/haproxy/
+    apt-get install -y libc6-dev nano ; mkdir -p /run/haproxy/
 
 COPY ./logstash/haproxy-logstash-pattern /opt/logstash-2.0.0/patterns/haproxy
 COPY ./logstash/logstash.conf /opt/logstash-2.0.0/
