@@ -22,7 +22,6 @@ echo Stopping the existing container...
 ./docker stop -t 0 gameon-proxy
 ./docker rm gameon-proxy
 echo Starting the new container...
-./docker run -d -p 80:80 -p 443:443 -p 1936:1936 -e LOGGING_DOCKER_HOST=$LOGGING_DOCKER_HOST \
-	-e ADMIN_PASSWORD=$ADMIN_PASSWORD -e PROXY_DOCKER_HOST=$PROXY_DOCKER_HOST --name=gameon-proxy gameon-proxy
+./docker run -d -p 80:80 -p 443:443 -p 1936:1936 -e LOGGING_DOCKER_HOST=$LOGGING_DOCKER_HOST -e ADMIN_PASSWORD=$ADMIN_PASSWORD -e PROXY_DOCKER_HOST=$PROXY_DOCKER_HOST --name=gameon-proxy gameon-proxy
 
 rm -rf docker-cfg
