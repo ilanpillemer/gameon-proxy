@@ -8,13 +8,13 @@ echo Informing slack...
 curl -X 'POST' --silent --data-binary '{"text":"A new build for the proxy has started."}' $WEBHOOK > /dev/null
 mkdir dockercfg ; cd dockercfg
 echo Downloading Docker requirements..
-wget http://$BUILD_DOCKER_HOST:8081/dockerneeds.tar -q
+wget --user=admin --password=$ADMIN_PASSWORD --no-check-certificate https://$PROXY_DOCKER_HOST:8443/dockerneeds.tar -q
 echo Setting up Docker...
 tar xzf dockerneeds.tar ; mv docker ../ ; cd .. ; chmod +x docker ; \
 	export DOCKER_HOST="tcp://$BUILD_DOCKER_HOST:2376" DOCKER_TLS_VERIFY=1 DOCKER_CONFIG=./dockercfg
 
 echo Downloading the certificate...
-wget http://$BUILD_DOCKER_HOST:8081/proxy.pem -O ./proxy.pem -q
+wget --user=admin --password=$ADMIN_PASSWORD --no-check-certificate https://$PROXY_DOCKER_HOST:8443/proxy.pem -O proxy.pem
 
 echo Building the docker image...
 ./docker build -t gameon-proxy .
