@@ -10,6 +10,7 @@ COPY ./proxy.pem /etc/ssl/proxy.pem
 COPY ./startup.sh /opt/startup.sh
 
 COPY ./haproxy.cfg /etc/haproxy/haproxy.cfg
+COPY ./haproxy-nolog.cfg /etc/haproxy/haproxy-nolog.cfg
 
 EXPOSE 80 443 1936
 
