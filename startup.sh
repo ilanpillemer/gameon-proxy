@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$ADMIN_PASSWORD" == "" ] || [ "$PROXY_DOCKER_HOST" == ""]; then
-  echo "One or more required environment variables is not set; please review README.md for more information."
-  exit 1
-fi
-
 if [ "$LOGSTASH_ENDPOINT" != "" ]; then
   sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy.cfg
   sed -i s/PLACEHOLDER_DOCKERHOST/$PROXY_DOCKER_HOST/g /etc/haproxy/haproxy.cfg
