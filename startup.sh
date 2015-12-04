@@ -8,7 +8,7 @@ fi
 if [ "$LOGGING_DOCKER_HOST" != "" ]; then
   sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy.cfg
   sed -i s/PLACEHOLDER_DOCKERHOST/$PROXY_DOCKER_HOST/g /etc/haproxy/haproxy.cfg
-  sed -i s/PLACEHOLDER_LOGHOST/$LOGGING_DOCKER_HOST/g /etc/haproxy/haproxy.cfg
+  sed -i s/PLACEHOLDER_LOGHOST/$LOGSTASH_ENDPOINT/g /etc/haproxy/haproxy.cfg
   echo Starting haproxy-- foreground mode.
   haproxy -f /etc/haproxy/haproxy.cfg
 else
