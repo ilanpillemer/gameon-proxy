@@ -7,10 +7,8 @@ if [ "$LOGSTASH_ENDPOINT" != "" ]; then
   echo Starting haproxy...
   haproxy -f /etc/haproxy/haproxy.cfg
 else
-  echo No logging host set. HAProxy will not log.
-  sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy-nolog.cfg
-  sed -i s/PLACEHOLDER_DOCKERHOST/$PROXY_DOCKER_HOST/g /etc/haproxy/haproxy-nolog.cfg
-  echo Starting haproxy with no logging, as none was defined.
-  haproxy -f /etc/haproxy/haproxy-nolog.cfg
+  echo HAProxy will log to STDOUT--this is dev environment.
+  sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy-dev.cfg
+  haproxy -f /etc/haproxy/haproxy-dev.cfg
 fi
 
