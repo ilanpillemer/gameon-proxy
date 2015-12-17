@@ -20,7 +20,8 @@ wget https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 --quiet -O docker
 chmod +x docker
 
 echo Downloading the certificate...
-wget --user=admin --password=$ADMIN_PASSWORD https://$BUILD_DOCKER_HOST:8443/proxy.pem -O proxy.pem -q
+#wget --user=admin --password=$ADMIN_PASSWORD https://$BUILD_DOCKER_HOST:8443/proxy.pem -O proxy.pem -q
+echo -e $GAMEON_CERT > proxy.pem 
 
 echo Building the docker image...
 ./docker build -t gameon-proxy .
