@@ -6,7 +6,6 @@
 
 echo Informing slack...
 curl -X 'POST' --silent --data-binary '{"text":"A new build for the proxy has started."}' $WEBHOOK > /dev/null
-mkdir dockercfg ; cd dockercfg
 
 echo Setting up Docker...
 mkdir dockercfg ; cd dockercfg
