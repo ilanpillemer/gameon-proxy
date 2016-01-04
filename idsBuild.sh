@@ -19,15 +19,12 @@ rm libapparmor.deb
 wget https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 --quiet -O docker
 chmod +x docker
 
-echo Downloading the certificate...
-echo -e $GAMEON_CERT > proxy.pem 
-
 echo Building the docker image...
 ./docker build -t gameon-proxy .
 echo Stopping the existing container...
 ./docker stop -t 0 gameon-proxy
 ./docker rm gameon-proxy
 echo Starting the new container...
-./docker run -d -p 80:80 -p 443:443 -p 1936:1936 -p 9001:9001 -e LOGSTASH_ENDPOINT=$LOGSTASH_ENDPOINT -e ADMIN_PASSWORD=$ADMIN_PASSWORD -e PROXY_DOCKER_HOST=$PROXY_DOCKER_HOST --name=gameon-proxy gameon-proxy
+./docker run -d -p 80:80 -p 443:443 -p 1936:1936 -p 9001:9001 --link=etcd -e ETCDCTL_ENDPOINT=http://etcd:4001 --name=gameon-proxy gameon-proxy
 
 rm -rf dockercfg
