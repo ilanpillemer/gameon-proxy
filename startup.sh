@@ -15,7 +15,7 @@ if [ "$ETCDCTL_ENDPOINT" != "" ]; then
   haproxy -f /etc/haproxy/haproxy.cfg
 else
   echo HAProxy will log to STDOUT--this is dev environment.
+  sed -i s/PLACEHOLDER_DOCKERHOST/$PROXY_DOCKER_HOST/g /etc/haproxy/haproxy-dev.cfg
   sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy-dev.cfg
   haproxy -f /etc/haproxy/haproxy-dev.cfg
 fi
-
