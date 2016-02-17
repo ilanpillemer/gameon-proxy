@@ -27,6 +27,7 @@ if [ "$ETCDCTL_ENDPOINT" != "" ]; then
   sed -i s/PLACEHOLDER_LOGHOST/$(etcdctl get /logstash/endpoint)/g /etc/haproxy/haproxy.cfg
   echo Starting haproxy...
   haproxy -f $PROXY_CONFIG
+  echo HAProxy shut down
 else
   echo HAProxy will log to STDOUT--this is dev environment.
   sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy-dev.cfg
