@@ -25,6 +25,15 @@ if [ "$ETCDCTL_ENDPOINT" != "" ]; then
   sed -i s/PLACEHOLDER_PASSWORD/$(etcdctl get /passwords/admin-password)/g /etc/haproxy/haproxy.cfg
   sed -i s/PLACEHOLDER_DOCKERHOST/$(etcdctl get /proxy/docker-host)/g /etc/haproxy/haproxy.cfg
   sed -i s/PLACEHOLDER_LOGHOST/$(etcdctl get /logstash/endpoint)/g /etc/haproxy/haproxy.cfg
+
+
+  export ROOM_ENDPOINT=$(etcdctl get /endpoints/room)
+  export MAP_ENDPOINT=$(etcdctl get /endpoints/map)
+  export MEDIATOR_ENDPOINT=$(etcdctl get /endpoints/mediator)
+  export PLAYER_ENDPOINT=$(etcdctl get /endpoints/player)
+  export WEBAPP_ENDPOINT=$(etcdctl get /endpoints/webapp)
+  export SWAGGER_ENDPOINT=$(etcdctl get /endpoints/swagger)
+
   echo Starting haproxy...
   haproxy -f $PROXY_CONFIG
   echo HAProxy shut down
