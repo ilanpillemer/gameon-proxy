@@ -34,6 +34,8 @@ if [ "$ETCDCTL_ENDPOINT" != "" ]; then
   export WEBAPP_ENDPOINT=$(etcdctl get /endpoints/webapp)
   export SWAGGER_ENDPOINT=$(etcdctl get /endpoints/swagger)
 
+  sudo service rsyslog start 
+
   echo Starting haproxy...
   haproxy -f $PROXY_CONFIG
   echo HAProxy shut down
