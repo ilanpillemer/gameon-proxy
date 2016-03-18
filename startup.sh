@@ -18,4 +18,3 @@ else
   sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy-dev.cfg
   haproxy -f /etc/haproxy/haproxy-dev.cfg
 fi
-
