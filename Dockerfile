@@ -4,6 +4,9 @@ MAINTAINER Ben Smith (benjsmi@us.ibm.com)
 
 RUN apt-get update && apt-get install -y wget ca-certificates --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
+RUN wget -qO- https://github.com/amalgam8/sidecar/releases/download/v0.2.0-alpha2/install-a8sidecar.sh | sh
+#RUN wget -qO- https://raw.githubusercontent.com/amalgam8/sidecar/master/install-a8sidecar.sh | sh
+
 RUN ln -s /usr/local/etc/haproxy /etc/
 RUN mkdir -p /run/haproxy/
 
