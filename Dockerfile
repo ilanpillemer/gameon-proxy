@@ -10,9 +10,9 @@ RUN wget -qO- https://github.com/amalgam8/sidecar/releases/download/v0.2.0-alpha
 RUN ln -s /usr/local/etc/haproxy /etc/
 RUN mkdir -p /run/haproxy/
 
-RUN wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz -q ; \
-    tar xzf etcd-v2.2.2-linux-amd64.tar.gz etcd-v2.2.2-linux-amd64/etcdctl --strip-components=1 ; \
-    rm etcd-v2.2.2-linux-amd64.tar.gz ; \
+RUN wget https://github.com/coreos/etcd/releases/download/v2.2.2/etcd-v2.2.2-linux-amd64.tar.gz -q && \
+    tar xzf etcd-v2.2.2-linux-amd64.tar.gz etcd-v2.2.2-linux-amd64/etcdctl --strip-components=1 && \
+    rm etcd-v2.2.2-linux-amd64.tar.gz && \
     mv etcdctl /usr/local/bin/etcdctl
 
 COPY ./proxy.pem /etc/ssl/proxy.pem
