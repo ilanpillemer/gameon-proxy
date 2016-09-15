@@ -1,7 +1,6 @@
 #!/bin/bash
 
-export A8_SERVICE=proxy:v1
-export A8_ENDPOINT_PORT=80
+export A8_SERVICE=proxy
 
 if [ "$ETCDCTL_ENDPOINT" != "" ]; then
   if [ "$PROXY_CONFIG" == "" ]; then
@@ -45,5 +44,5 @@ if [ "$ETCDCTL_ENDPOINT" != "" ]; then
 else
   echo HAProxy will log to STDOUT--this is dev environment.
   sed -i s/PLACEHOLDER_PASSWORD/$ADMIN_PASSWORD/g /etc/haproxy/haproxy-dev.cfg
-  exec a8sidecar --supervise haproxy -f /etc/haproxy/haproxy-dev.cfg
+  exec a8sidecar --log --proxy --supervise haproxy -f /etc/haproxy/haproxy-dev.cfg
 fi
